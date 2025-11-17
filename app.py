@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-# -------------------------------
+# --------------------------------
 # Title and Description
 # -------------------------------
 st.title("📊 Business Sales Dashboard")
