@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 import pandas as pd
-
+import numpy as np
 # Title
 st.title("Business Dashboard with Streamlit Layouts")
 
@@ -75,15 +75,13 @@ business_insights = [
 for insight in business_insights:
     placeholder.write(insight)
     time.sleep(2)
-
-df = pd.DataFrame(rng(0).standard_normal((20,3)),columns=['a','b','c'])
+rng = np.random.default_rng(42)
+df = pd.DataFrame(rng.standard_normal((20, 3)), columns=['a', 'b', 'c'])
 st.area_chart(df)
 
 option = st.selectbox(
-    "How would you like to be contact"
-    ["Email2",
-    "Home phone",
-    "Mobile Phone"],
+    "How would you like to be contacted?",
+    ["Email", "Home phone", "Mobile Phone"]
 )
 
-st.write("You Selected:", option)
+st.write(f"You Selected: {option}")
