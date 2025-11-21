@@ -74,3 +74,15 @@ business_insights = [
 for insight in business_insights:
     placeholder.write(insight)
     time.sleep(2)
+
+df = pd.DataFrame(rng(0).standard_normal((20,3)),columns=['a','b','c'])
+st.area_chart(df)
+
+option = st.selectbox(
+    "How would you like to be contact"
+    ["Email2",
+    "Home phone",
+    "Mobile Phone"],
+)
+
+st.write("You Selected:"option)
