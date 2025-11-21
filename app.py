@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+import pandas as pd
 
 # Title
 st.title("Business Dashboard with Streamlit Layouts")
