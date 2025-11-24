@@ -6,6 +6,19 @@ import os
 st.title('Hello, Students!')
 st.write('This is your Python Programming course.')
 
+# Get the current working directory
+current_directory = os.getcwd()
+# Define the file path
+file_path = os.path.join(current_directory, 'winequality-red.csv')
+
+# Read the CSV file into a DataFrame
+df = pd.read_csv(file_path, delimiter=';')
+
+# Display the DataFrame in an interactive table
+st.write("Wine Quality Data")
+st.dataframe(df)
+
+
 with st.sidebar:
     selected=option_menu(
         menu_title = "Menu",
@@ -23,15 +36,3 @@ if selected == "About":
 
 if selected == "Contact":
     st.title(f"Welcome to the {selected} page.")
-
-# Get the current working directory
-current_directory = os.getcwd()
-# Define the file path
-file_path = os.path.join(current_directory, 'winequality-red.csv')
-
-# Read the CSV file into a DataFrame
-df = pd.read_csv(file_path, delimiter=';')
-
-# Display the DataFrame in an interactive table
-st.write("Wine Quality Data")
-st.dataframe(df)
