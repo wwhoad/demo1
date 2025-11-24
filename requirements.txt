@@ -3,3 +3,4 @@ pandas
 numpy
 matplotlib
 numpy
+streamlit_option_menue
