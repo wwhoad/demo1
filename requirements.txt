@@ -4,3 +4,4 @@ numpy
 matplotlib
 numpy
 streamlit_option_menu
+os
