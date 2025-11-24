@@ -1,5 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import pandas as pd
+import os
 
 st.title('Hello, Students!')
 st.write('This is your Python Programming course.')
@@ -21,3 +23,11 @@ if selected == "About":
 
 if selected == "Contact":
     st.title(f"Welcome to the {selected} page.")
+
+current_directory = os.getcwd()
+file_path = os.path.join(current_directory,'winequality-red.csv)
+
+df = pd.read_csv(file_path,delimiter=';')
+
+st.write('Wine Quality Data')
+st.dataframe(df)
