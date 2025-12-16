@@ -76,7 +76,7 @@ placeholder = st.empty()
 # Simulate loading data with progress messages
 for i in range(6):  # 0%, 20%, 40%, 60%, 80%, 100%
     placeholder.write(f"Loading data... {i * 20}% complete")
-    time.sleep(1)
+    time.sleep(2)
 
 # Replace placeholder with business insights after loading
 placeholder.write("Data loading complete. Displaying business insights.")
