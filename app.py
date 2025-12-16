@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 
 # -------------------------------
 # 1. Dashboard Title and Objective
