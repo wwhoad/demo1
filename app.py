@@ -1,39 +1,76 @@
 import streamlit as st
-import pandas as pd
+import time
 
-# Step 1: Generate Sample Data with 5 Items
-data = {'Product': ['A', 'B', 'C', 'D', 'E'], 
-        'Sales': [1200, 850, 950, 1100, 1300], 
-        'Customers': [300, 400, 350, 450, 500]}
-df = pd.DataFrame(data)
+# Title
+st.title("Business Dashboard with Streamlit Layouts")
 
-# Step 2: Display the Sample Data at the Top
-st.write("### Sample Data")
-st.write(df)
+# Objective
+st.write("Objective: To demonstrate the usage of columns, tabs, and dynamic containers in a business dashboard.")
 
-# Step 3: Create a Slider for Selecting a Sales Range
-sales_range = st.slider("Select Sales Range", min_value=0, max_value=1500, value=(500, 1000))
+# Columns Layout
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.header("Q1 2024")
+    st.write("Revenue: $1.2M")
+with col2:
+    st.header("Q2 2024")
+    st.write("Revenue: $1.5M")
+with col3:
+    st.header("Q3 2024")
+    st.write("Revenue: $1.3M")
 
-# Step 4: Filter Products Based on Selected Sales Range
-filtered_df = df[(df['Sales'] >= sales_range[0]) & (df['Sales'] <= sales_range[1])]
+# Tabs Layout
+tab1, tab2, tab3 = st.tabs(["Sales Data", "Customer Insights", "Market Trends"])
+with tab1:
+    st.write("Content for Sales Data")
+    sales_data = {
+        "Q1 2024": "$1.2M",
+        "Q2 2024": "$1.5M",
+        "Q3 2024": "$1.3M",
+        "Q4 2024": "$1.6M"
+    }
+    for quarter, revenue in sales_data.items():
+        st.write(f"{quarter}: {revenue}")
+with tab2:
+    st.write("Content for Customer Insights")
+    customer_feedback = [
+        "Great service!",
+        "Very satisfied with the product quality.",
+        "Quick delivery and excellent support."
+    ]
+    for feedback in customer_feedback:
+        st.write(f"- {feedback}")
+with tab3:
+    st.write("Content for Market Trends")
+    market_trends = {
+        "Eco-friendly products": "Increasing demand",
+        "Online shopping": "Continued growth",
+        "Subscription services": "Rising popularity"
+    }
+    for trend, status in market_trends.items():
+        st.write(f"{trend}: {status}")
 
-# Step 5: Create a Dropdown for Selecting a Product from Filtered Data
-product_choice = st.selectbox("Select Product", filtered_df['Product'].unique())
+with st.expander("More Information"):
+    st.write("Additional details on data collection methods.")
+    st.write("Data was collected through surveys and sales reports.")
 
-# Step 6: Create a Form for Feedback Submission
-with st.form(key="feedback_form"):
-    product_id = st.text_input("Enter Product ID")
-    feedback = st.text_area("Enter your feedback")
-    submit_button = st.form_submit_button("Submit Feedback")
+# Dynamic Containers
+placeholder = st.empty()
 
-# Step 7: Define a Callback Function to Submit Feedback
-def submit_feedback():
-    st.write("### Submitted Feedback")
-    st.write(f"**Product:** {product_choice}")
-    st.write(f"**Sales Range:** {sales_range}")
-    st.write(f"**Product ID:** {product_id}")
-    st.write(f"**Feedback:** {feedback}")
+# Simulate loading data and updating the placeholder
+for i in range(5):
+    placeholder.write(f"Loading data... {i*20}% complete")
+    time.sleep(1)
 
-# Step 8: Check if the Submit Button is Clicked
-if submit_button:
-    submit_feedback()
+# Once loading is complete, display the final message
+placeholder.write("Data loading complete. Displaying business insights.")
+
+# Display dynamic business insights
+business_insights = [
+    "Revenue increased by 15% in Q1 2024.",
+    "Customer satisfaction improved by 10%.",
+    "Market trends show a growing demand for eco-friendly products."
+]
+for insight in business_insights:
+    placeholder.write(insight)
+    time.sleep(2)
