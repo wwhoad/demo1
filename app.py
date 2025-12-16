@@ -1,6 +1,15 @@
+mport os
 import streamlit as st
 import pandas as pd
 
+# Check what files are in current directory
+st.write("Files in current directory:")
+for file in os.listdir('.'):
+    st.write(f"- {file}")
+
+# Check specifically for CSV files
+csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
+st.write("CSV files found:", csv_files)
 # Step 3: Load Superstore Dataset
 df = pd.read_csv('superstore_dataset.csv')
 
