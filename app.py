@@ -2,16 +2,17 @@ import os
 import streamlit as st
 import pandas as pd
 
-# Check what files are in current directory
-st.write("Files in current directory:")
-for file in os.listdir('.'):
-    st.write(f"- {file}")
+sales_data = np.random.rand(100) * 1000
+ # Step 4: Create a DataFrame
+products = ['Product A', 'Product B', 'Product C', 'Product D', 'Product E']
+sales = np.random.rand(5) * 1000
+customers = np.random.randint(1, 100, size=5)
+ df = pd.DataFrame({
+    'Product': products,
+    'Sales': sales,
+    'Customers': customers
+})
 
-# Check specifically for CSV files
-csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
-st.write("CSV files found:", csv_files)
-# Step 3: Load Superstore Dataset
-df = pd.read_csv('superstore_dataset.csv')
 
 # Step 4: Convert 'order_date' to datetime
 df['order_date'] = pd.to_datetime(df['order_date'])  # Convert to datetime if not already
