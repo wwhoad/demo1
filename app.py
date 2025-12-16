@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import pandas as pd
-import numpy as py
+import numpy as np
 
 sales_data = np.random.rand(100) * 1000
  # Step 4: Create a DataFrame
