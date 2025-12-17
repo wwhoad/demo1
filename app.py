@@ -1,4 +1,5 @@
 import math
+import streamlit as st
 
 st.header("Scientific Functions")
 operation_sci = st.selectbox("Choose scientific operation", ["Square Root", "Power", "Sin", "Cos", "Tan"])
