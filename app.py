@@ -1,16 +1,21 @@
-import streamlit as st
+import math
 
-st.title("Streamlit Demo App")
-st.header("User Input Section")
+st.header("Scientific Functions")
+operation_sci = st.selectbox("Choose scientific operation", ["Square Root", "Power", "Sin", "Cos", "Tan"])
 
-st.write("Please provide your details below:")
+value = st.number_input("Enter value", value=0.0)
+power = st.number_input("Enter power (if applicable)", value=2.0)
 
-age = st.number_input("Enter your age:",
-                      min_value=0,
-                      max_value=120,
-                      value=25)
-color = st.selectbox("Choose your favorite color:",
-                     ["Red", "Blue", "Green"])
+if st.button("Calculate Scientific"):
+    if operation_sci == "Square Root":
+        result = math.sqrt(value)
+    elif operation_sci == "Power":
+        result = math.pow(value, power)
+    elif operation_sci == "Sin":
+        result = math.sin(math.radians(value))
+    elif operation_sci == "Cos":
+        result = math.cos(math.radians(value))
+    elif operation_sci == "Tan":
+        result = math.tan(math.radians(value))
 
-if st.button("Submit"):
-    st.success(f"Thank you! Age: {age}, Favorite Color: {color}")
+    st.success(f"Result: {result}")
